@@ -1,0 +1,12 @@
+{
+  "name": "babel-brainly-i18",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.1"
+  },
+  "scripts": {
+    "run": "node run.js demo.js"
+  }
+}
