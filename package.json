@@ -4,9 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.24.1"
+    "babel-core": "^6.24.1",
+    "eslint": "^3.19.0",
+    "frontend-tools-configs": "git+https://github.com/brainly/frontend-tools-configs.git#v8.0.0",
+    "jest": "^20.0.0"
   },
   "scripts": {
-    "run": "node run.js demo.js"
+    "js-lint": "eslint ./*.js",
+    "js-unit-tests": "jest --coverage",
+    "demo": "node run.js demo.js",
+    "test": "yarn run js-lint && yarn run js-unit-tests"
   }
 }

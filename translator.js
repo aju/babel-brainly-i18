@@ -15,5 +15,5 @@ module.exports = class Translator {
     const translation = this.sourceStrings[key];
 
     return translation ? translation : key;
-  };
+  }
 };

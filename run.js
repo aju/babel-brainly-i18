@@ -1,20 +1,22 @@
-var fs = require('fs');
-var path = require('path');
-var babel = require('babel-core');
-var i18plugin = require('./index');
+const fs = require('fs');
+const path = require('path');
+const babel = require('babel-core');
+const i18plugin = require('./index');
 
 // read the filename from the command line arguments
-var fileName = process.argv[2];
+const fileName = process.argv[2];
 
 // read the code from this file
 fs.readFile(fileName, function(err, data) {
-  if(err) throw err;
+  if (err) {
+    throw err;
+  }
 
   // convert from a buffer to a string
-  var src = data.toString();
+  const src = data.toString();
 
   // use our plugin to transform the source
-  var out = babel.transform(src, {
+  const out = babel.transform(src, {
     plugins: [[i18plugin, {
       translations: [path.join(__dirname, 'translations/messages.json'),
         path.join(__dirname, 'translations/messages-js.json')]
@@ -22,5 +24,5 @@ fs.readFile(fileName, function(err, data) {
   });
 
   // print the generated code to screen
-  console.log(out.code);
+  console.log(out.code); // eslint-disable-line no-console
 });
