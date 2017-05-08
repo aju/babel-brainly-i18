@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var babel = require('babel-core');
 var i18plugin = require('./index');
 
@@ -14,7 +15,10 @@ fs.readFile(fileName, function(err, data) {
 
   // use our plugin to transform the source
   var out = babel.transform(src, {
-    plugins: [i18plugin]
+    plugins: [[i18plugin, {
+      translations: [path.join(__dirname, 'translations/messages.json'),
+        path.join(__dirname, 'translations/messages-js.json')]
+    }]]
   });
 
   // print the generated code to screen
